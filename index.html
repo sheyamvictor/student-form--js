@@ -40,29 +40,29 @@
                         <tr>
                             <td>Name:</td>
                             <td>
-                                <input type="text" id="name" placeholder="enter ur name">
+                                <input type="text" id="name" placeholder="enter ur name" required>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Age:</td>
                             <td>
-                                <input type="number" id="age" placeholder="enter ur age">
+                                <input type="number" id="age" placeholder="enter ur age" required>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Gender:</td>
                             <td>
-                                <input type="radio" id="male" name="Gender" value="male">male
-                                <input type="radio" id="female" name="Gender" value="female">female
+                                <input type="radio" id="male" name="Gender" value="male" required>male
+                                <input type="radio" id="female" name="Gender" value="female" required>female
                             </td>
                         </tr>
 
                         <tr>
                             <td>Email:</td>
                             <td>
-                                <input type="email" id="email" placeholder="enter ur mail">
+                                <input type="email" id="email" placeholder="enter ur mail" required>
                             </td>
                         </tr>
 
@@ -165,29 +165,31 @@
 
         const editRow = (clickedRowIndex) => {
             const row = usertable.rows[clickedRowIndex]
+            console.log (clickedRowIndex)
 
             const name = row.cells[0].textContent
             const age = row.cells[1].textContent
             const gender = row.cells[2].textContent
             const email = row.cells[3].textContent
+console.log(email)
+           document.getElementById("name").value = name
+            document.getElementById("age").value =age
+            document.getElementById("email").value =email
 
-            document.getElementById("name").value;
-             document.getElementById("age").value;
+            
 
-            document.getElementById("male");
-             document.getElementById("female");
+            if (gender== "male") {
+                document.getElementById("male").checked = true
 
-        
+                
+            } else if (gender=="female") {
+                document.getElementById("female").checked =true
+            } else {
+                // Handle the case where no radio button is selected (optional)
+            }
 
-            // if (maleRadio.checked) {
-            //     gender = maleRadio.value;
-            // } else if (femaleRadio.checked) {
-            //     gender = femaleRadio.value;
-            // } else {
-            //     // Handle the case where no radio button is selected (optional)
-            // }
-
-             document.getElementById("email").value;
+        //    let setemail = document.getElementById("email")
+        //    console.log(setemail);
 
             editidx = (clickedRowIndex)
 
@@ -195,7 +197,7 @@
 
         const updateRow = (index, name, age, gender, email) => {
 
-            const row = usertable.rows[editidx]
+            const row = usertable.rows[index]
 
             row.cells[0].textContent = name
             row.cells[1].textContent = age
